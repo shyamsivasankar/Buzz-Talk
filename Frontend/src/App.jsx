@@ -1,15 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from "react";
+import Login from './pages/login/Login.jsx'
+import SignUp from "./pages/signup/SignUp.jsx";
+import Home from "./pages/home/Home.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="p-4 h-screen flex items-center justify-center">
+      <Home/>
+    </div>
+  );
 }
 
-export default App
+export default App;
