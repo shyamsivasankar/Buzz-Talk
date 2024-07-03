@@ -1,22 +1,29 @@
 import React from 'react'
+import useConversations from '../../zustand/useConversations'
 
-const Conversation = () => {
+const Conversation = ({conversation,LastIdx}) => {
+  const {selectedConversation, setSelectedConversation} = useConversations()
+  const isSelected = selectedConversation?._id === conversation._id
   return (
     <>
-        <div className='flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer h-[15%]'>
+        <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer h-[15%]
+            ${isSelected ? "bg-sky-500" : ""}
+            `}
+            onClick={() => setSelectedConversation(conversation)}
+            >
             <div className='avatar online'>
                 <div className='w-12 rounded-full'>
-                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="user avatar" />
+                    <img src={conversation.profilePic} alt="user avatar" />
                 </div>
             </div>
             <div className='flex flex-col flex-1'>
                 <div className='flex gap-3 justify-between'>
-                    <p className='font-bold text-gray-200'>Jane Done</p>
+                    <p className='font-bold text-gray-200'>{conversation.fullName}</p>
                     <span className='text-xl'> 😇  </span>
                 </div>
             </div>
         </div>
-        <div className='divider my-0 py-0 h-1'/>
+        {!LastIdx && <div className='divider my-0 py-0 h-1'/>}
     </>
   )
 }
