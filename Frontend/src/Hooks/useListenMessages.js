@@ -10,10 +10,10 @@ const useListenMessages = () => {
     useEffect(() => {
         socket?.on('newMessage',(newMessage) => {
             // console.log(newMessage,selectedConversation)
-            // if(newMessage.senderId === selectedConversation?._id){
-            //     setMessages([...messages,newMessage])
-            // }
-            setMessages([...messages,newMessage])
+            if(newMessage.senderId === selectedConversation?._id){
+                setMessages([...messages,newMessage])
+            }
+            // setMessages([...messages,newMessage])
             const sound = new Audio(notificationSound)
             sound.play()
         })
